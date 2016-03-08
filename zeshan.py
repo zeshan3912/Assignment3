@@ -32,6 +32,7 @@ test  = (test[0] ,linit(test[1]))
 # build our classifier
 print "We're building a RBM of 1 input layer node, 4 hidden layer nodes, and an output layer of 4 nodes. The output layer has 4 nodes because we have 4 classes that the neural network will output."
 
+#first 
 cnet = theanets.Classifier([4,10,5,2])
 cnet.train(train,valid, algo='layerwise', patience=1, max_updates=mupdates)
 cnet.train(train,valid, algo='rprop', patience=1, max_updates=mupdates)
@@ -41,3 +42,28 @@ classify = cnet.classify(test[0])
 print "%s / %s " % (sum(classify == test[1]),len(test[1]))
 print collections.Counter(classify)
 print theautil.classifications(classify,test[1])
+
+
+#second 
+cnet = theanets.Classifier([4,3,4])
+cnet.train(train,valid, algo='layerwise', patience=1, max_updates=mupdates)
+cnet.train(train,valid, algo='rprop', patience=1, max_updates=mupdates)
+
+print "Learner on the test set"
+classify = cnet.classify(test[0])
+print "%s / %s " % (sum(classify == test[1]),len(test[1]))
+print collections.Counter(classify)
+print theautil.classifications(classify,test[1])
+
+
+#third 
+cnet = theanets.Classifier([4,10,5,4,5,2])
+cnet.train(train,valid, algo='layerwise', patience=1, max_updates=mupdates)
+cnet.train(train,valid, algo='rprop', patience=1, max_updates=mupdates)
+
+print "Learner on the test set"
+classify = cnet.classify(test[0])
+print "%s / %s " % (sum(classify == test[1]),len(test[1]))
+print collections.Counter(classify)
+print theautil.classifications(classify,test[1])
+
